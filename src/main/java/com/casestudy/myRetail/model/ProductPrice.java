@@ -13,11 +13,15 @@ import java.math.BigDecimal;
 @Document(collection = "product_price")
 public class ProductPrice {
 
+    public static final String FIELD_PRODUCT_ID = "id";
+    public static final String FIELD_PRICE_VALUE = "price";
+    public static final String FIELD_CURRENCY_CODE = "currency_code";
+
     private Long id;
 
     private BigDecimal price;
 
-    @Field(value = "currency_code")
+    @Field(value = FIELD_CURRENCY_CODE)
     private CurrencyCodeEnum currencyCode;
 
     public String getCurrencyCodeAsString(CurrencyCodeEnum codeEnum) {
