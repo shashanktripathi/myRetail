@@ -1,5 +1,6 @@
 package com.casestudy.myRetail.service.impl;
 
+import com.casestudy.myRetail.request.PriceUpdateRequest;
 import com.casestudy.myRetail.response.ProductPriceResponse;
 import com.casestudy.myRetail.response.ProductResponse;
 import com.casestudy.myRetail.response.RedSkyProductResponse;
@@ -28,6 +29,16 @@ public class ProductServiceImpl implements ProductService {
         return ProductResponse.builder()
                 .id(id)
                 .name(redSkyProductResponse.getName())
+                .currentPrice(productPriceResponse)
+                .build();
+    }
+
+    @Override
+    public ProductResponse updateProductPrice(Long id, PriceUpdateRequest request) {
+        ProductPriceResponse productPriceResponse = productPriceService.updatePrice(id, request);
+        return ProductResponse.builder()
+                .id(request.getId())
+                .name(request.getName())
                 .currentPrice(productPriceResponse)
                 .build();
     }

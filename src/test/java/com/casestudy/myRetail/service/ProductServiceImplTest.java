@@ -1,7 +1,10 @@
 package com.casestudy.myRetail.service;
 
+import com.casestudy.myRetail.exception.InvalidUpdateException;
 import com.casestudy.myRetail.exception.ProductNotFoundException;
 import com.casestudy.myRetail.model.enums.CurrencyCodeEnum;
+import com.casestudy.myRetail.request.PriceUpdateRequest;
+import com.casestudy.myRetail.request.ProductPriceRequest;
 import com.casestudy.myRetail.response.ProductPriceResponse;
 import com.casestudy.myRetail.response.ProductResponse;
 import com.casestudy.myRetail.response.RedSkyProductResponse;
@@ -38,10 +41,18 @@ public class ProductServiceImplTest {
             .value(PRODUCT_PRICE)
             .currencyCode(PRODUCT_PRICE_CURRENCY.getCode())
             .build();
-    private static final ProductResponse TEST_PRODUCT_PRICE = ProductResponse.builder()
+    private static final ProductResponse PRODUCT_RESPONSE = ProductResponse.builder()
             .id(PRODUCT_ID)
             .name(PRODUCT_NAME)
             .currentPrice(PRODUCT_PRICE_RESPONSE)
+            .build();
+    private static final PriceUpdateRequest PRICE_UPDATE_REQUEST = PriceUpdateRequest.builder()
+            .id(PRODUCT_ID)
+            .name(PRODUCT_NAME)
+            .currentPrice(ProductPriceRequest.builder()
+                    .value(PRODUCT_PRICE)
+                    .currencyCode(PRODUCT_PRICE_CURRENCY.getCode())
+                    .build())
             .build();
 
     @Test
@@ -53,7 +64,7 @@ public class ProductServiceImplTest {
                 .build());
 
         ProductResponse product = productService.getProduct(PRODUCT_ID);
-        assertThat(product, is(TEST_PRODUCT_PRICE));
+        assertThat(product, is(PRODUCT_RESPONSE));
     }
 
     @Test(expected = ProductNotFoundException.class)
@@ -70,5 +81,26 @@ public class ProductServiceImplTest {
     public void shouldThrowExceptionWhenRedSkyProductServiceThrowsException() {
         when(redSkyProductService.getProduct(PRODUCT_ID)).thenThrow(new ProductNotFoundException(""));
         productService.getProduct(PRODUCT_ID);
+    }
+
+    @Test
+    public void testUpdateProductPriceSuccess() {
+        when(productPriceService.updatePrice(PRODUCT_ID, PRICE_UPDATE_REQUEST)).thenReturn(PRODUCT_PRICE_RESPONSE);
+        ProductResponse response = productService.updateProductPrice(PRODUCT_ID, PRICE_UPDATE_REQUEST);
+        assertThat(response, is(PRODUCT_RESPONSE));
+    }
+
+    @Test(expected = ProductNotFoundException.class)
+    public void shouldThrowExceptionWhenProductDoesNotExists() {
+        when(productPriceService.updatePrice(PRODUCT_ID, PRICE_UPDATE_REQUEST))
+                .thenThrow(new ProductNotFoundException(""));
+        productService.updateProductPrice(PRODUCT_ID, PRICE_UPDATE_REQUEST);
+    }
+
+    @Test(expected = InvalidUpdateException.class)
+    public void shouldThrowExceptionWhenIdDoesNotMatchWithRequestBody() {
+        when(productPriceService.updatePrice(1L, PRICE_UPDATE_REQUEST))
+                .thenThrow(new InvalidUpdateException(""));
+        productService.updateProductPrice(1L, PRICE_UPDATE_REQUEST);
     }
 }
