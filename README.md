@@ -21,4 +21,50 @@ This application when compiled can be executed via simple command:
 
 ## Result
 1. Postman screenshots are available in the `screenshots` directory
-2. Postman collection: https://www.getpostman.com/collections/b7e137c8eeb7591bd7e3
+2. Postman collection:
+```json
+{
+	"info": {
+		"_postman_id": "5034b435-5d16-4298-8d5e-bc4138f41703",
+		"name": "myRetail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "localhost:8080/products/13860428",
+				"description": "Get Product"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product Price",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1386042,\n    \"name\": \"The Big Lebowski (Blu-ray)\",\n    \"current_price\": {\n        \"value\": \"18.66\",\n        \"currency_code\": \"USD\"\n    }\n}"
+				},
+				"url": "localhost:8080/products/1386042",
+				"description": "Update Product Price"
+			},
+			"response": []
+		}
+	]
+}
+```
