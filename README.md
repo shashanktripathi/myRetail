@@ -5,15 +5,20 @@ The goal for this exercise is to create an end-to-end Proof-of-Concept for a pro
 # How to run the application
 
 ## Pre-requisites
-1. Maven must be installed
-2. Mongodb installed
+1. Java 8
+2. Maven
+3. Mongodb
 
 ## Setup
-Run ./setup.sh
->This command will seed product price data into local mongodb
->Then will run the app on port 8080
->API can be accessed via `localhost:8080`
+This application when compiled can be executed via simple command:
+```
+./setup.sh
+```
+
+1. This command will seed product price data into local mongodb
+2. Then will run the app on port 8080
+3. API can be accessed via `localhost:8080`
 
 ## Result
->Postman screenshots are available in the `screenshots` directory
->Postman collection: https://www.getpostman.com/collections/b7e137c8eeb7591bd7e3
+1. Postman screenshots are available in the `screenshots` directory
+2. Postman collection: https://www.getpostman.com/collections/b7e137c8eeb7591bd7e3
