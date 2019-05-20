@@ -1,0 +1,60 @@
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e68c"),
+  "id" : NumberLong(13860434),
+  "price" : 23.06,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e68d"),
+  "id" : NumberLong(13860428),
+  "price" : 17.66,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e68e"),
+  "id" : NumberLong(13860431),
+  "price" : 5.49,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e68f"),
+  "id" : NumberLong(13860432),
+  "price" : 40.33,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e690"),
+  "id" : NumberLong(13860435),
+  "price" : 10.01,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e691"),
+  "id" : NumberLong(13860436),
+  "price" : 8.08,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e692"),
+  "id" : NumberLong(13860429),
+  "price" : 99.97,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e693"),
+  "id" : NumberLong(13860433),
+  "price" : 80.0,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e694"),
+  "id" : NumberLong(13860430),
+  "price" : 79.99,
+  "currency_code" : "USD"
+}
+{
+  "_id" : ObjectId("5ce2afe0ff155cac9bd8e695"),
+  "id" : NumberLong(13860437),
+  "price" : 2000.0,
+  "currency_code" : "USD"
+}
