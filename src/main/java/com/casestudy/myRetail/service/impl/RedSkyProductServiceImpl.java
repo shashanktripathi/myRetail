@@ -21,10 +21,6 @@ public class RedSkyProductServiceImpl implements RedSkyProductService {
     private
     String redSkyProductUrl;
 
-    @Value("${redsky.target.product.url.params}")
-    private
-    String redSkyProductUrlParams;
-
     @Override
     public RedSkyProductResponse getProduct(Long id) {
         RestTemplate restTemplate = new RestTemplate();

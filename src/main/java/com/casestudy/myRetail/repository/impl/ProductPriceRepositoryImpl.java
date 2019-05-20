@@ -15,6 +15,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import static com.casestudy.myRetail.model.ProductPrice.*;
 import static com.mongodb.client.model.Filters.eq;
@@ -47,8 +48,8 @@ public class ProductPriceRepositoryImpl implements ProductPriceRepository {
                 Document priceDoc = documents.next();
                 productPrice = builder()
                         .id(productId)
-                        .price(new BigDecimal(priceDoc.getDouble(FIELD_PRICE_VALUE)))
-                        .currencyCode(CurrencyCodeEnum.valueOf(priceDoc.getString(FIELD_CURRENCY_CODE)))
+                        .price(new BigDecimal(String.valueOf(priceDoc.get(FIELD_PRICE_VALUE))))
+                        .currencyCode(CurrencyCodeEnum.valueOf(String.valueOf(priceDoc.get(FIELD_CURRENCY_CODE))))
                         .build();
             }
 
